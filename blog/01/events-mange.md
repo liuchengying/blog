@@ -348,7 +348,7 @@ events.prototype.install = function (Vue, Option) {
 ```
 不用多解释了吧，想必看官都明白应该怎么使用了吧(在Vue中)
 
-#####关于本库更具体更详细的使用文档，[赶紧戳这里](https://www.github.com/liuchengying/js-Events)
+##### 关于本库更具体更详细的使用文档，[赶紧戳这里](https://www.github.com/liuchengying/js-Events)
 
 码字不易啊，如果觉得对您有一些帮助，还请给一个大大的赞👍哈哈
 
