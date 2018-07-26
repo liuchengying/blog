@@ -44,7 +44,7 @@ document.body.addEventListener('click', function (e) {
 ---------
 ##### 基本骨架
 
-首先，我们希望通过 event.on , event.emit 来订阅和发布，通过构造函数来创建一个event实例，而on，emit分别为这个实例的两个方法, 同样的，以上列出的所有主要方法，都是event的对象的原型方法。
+首先，我们希望通过 event.on , event.emit 来订阅和发布，通过构造函数来创建一个event实例，而on,emit分别为这个实例的两个方法, 同样的，以上列出的所有主要方法，都是event的对象的原型方法。
 ``` javascript
 function events () {};
 
@@ -62,21 +62,21 @@ event.prototype.removeAllListener = function () {};
 
 event.prototype.getListenerCount = function () {};
 ```
-似乎丢了什么，没错，是event对象我们上面列出来的MaxEventListNum属性，我们给他补上
+似乎丢了什么，没错，是event对象我们上面列出来的MaxEventListNum属性，我们给他补上
 ``` javascript
 function event () {
     //因为MaxEventListNum属性是可以让开发者设置的
-    //所以在没有set的时候，我们将其设置为 undefind
-    this.MaxEventListNum = this.MaxEventListNum || undefined;
+    //所以在没有set的时候，我们将其设置为 undefind
+    this.MaxEventListNum = this.MaxEventListNum || undefined;
 
-    //如果没有设置set，我们不能让监听数量无限大
+    //如果没有设置set，我们不能让监听数量无限大
     //这样有可能会造成内存溢出
-    //所以我们将默认数量设置为10（当然，设置成别的数量也是可以的）
-    this.defaultMaxEventListNum = 10;
+    //所以我们将默认数量设置为10（当然，设置成别的数量也是可以的）
+    this.defaultMaxEventListNum = 10;
 }
 
 ```
-到这里，基本上我们想实现的时间管理模块属性和方法的初态也就差不多了，也就是说，骨架出来了，我们就需要填饱他的代码逻辑，让他变的有血有肉（看似像个生命...）
+到这里，基本上我们想实现的时间管理模块属性和方法的初态也就差不多了，也就是说，骨架出来了，我们就需要填饱他的代码逻辑，让他变的有血有肉（看似像个生命...）
 
 值得思考的是，骨架我们构建完了，我们要做的是一个订阅--发布模式，我们应该怎么去记住众多的订阅事件呢？ 首先，对于一个订阅，我们需要有一个订阅的类型，也就是topic，针对此topic我们要把所有的订阅此topic的事件都放在一起，对，可以选择Array，初步的构造
 
@@ -87,7 +87,7 @@ event_list: {
 }
 ```
 
-那么接下来我们将存放我们事件的event_list放入代码中完善,作为event的属性
+那么接下来我们将存放我们事件的event_list放入代码中完善,作为event的属性
 
 ``` javascript
 function event () {
@@ -96,8 +96,8 @@ function event () {
         this.event_list = {};
     }
 
-    this.MaxEventListNum = this.MaxEventListNum || undefined;
-    this.defaultMaxEventListNum = 10;
+    this.MaxEventListNum = this.MaxEventListNum || undefined;
+    this.defaultMaxEventListNum = 10;
 }
 ```
 ----------
@@ -106,14 +106,14 @@ function event () {
 ``` javascript
 event.prototype.on = function () {};
 ```
-通过分析得出on方法首先应该接收一个订阅的topic，其次是一个当此topic响应后触发的callback方法
+通过分析得出on方法首先应该接收一个订阅的topic，其次是一个当此topic响应后触发的callback方法
 
 ``` javascript
-event.prototype.on = function (eventName, content) {};
+event.prototype.on = function (eventName, content) {};
 ```
-eventName作为事件类型，将其作为event_list的一个属性，所有的事件类型为eventName的监听都push到eventName这个数组里面。
+eventName作为事件类型，将其作为event_list的一个属性，所有的事件类型为eventName的监听都push到eventName这个数组里面。
 ``` javascript
-event.prototype.on = function (eventName, content) {
+event.prototype.on = function (eventName, content) {
     ...
     var _event, ctx;
     _event = this.event_list;
@@ -126,16 +126,16 @@ event.prototype.on = function (eventName, content) {
     }
     // 判断是否有此监听类型
     // 如果不存在，则表示此事件第一次被监听
-    // 将回调函数 content 直接赋值
+    // 将回调函数 content 直接赋值
     if (!ctx) {
       ctx = this.event_list[eventName] = content;
       // 改变订阅者数量
       ctx.ListenerCount = 1;
     } else if (isFunction(ctx)) {
-      // 判断此属性是否为函数（是函数则表示已经有且只有一个订阅者）
-      // 将此eventName类型由函数转变为数组
+      // 判断此属性是否为函数（是函数则表示已经有且只有一个订阅者）
+      // 将此eventName类型由函数转变为数组
       ctx = this.event_list[eventName] = [ctx, content];
-      // 此时订阅者数量变为数组长度
+      // 此时订阅者数量变为数组长度
       ctx.ListenerCount = ctx.length;
     } else if (isArray(ctx)) {
       // 判断是否为数组，如果是数组则直接push
@@ -150,16 +150,16 @@ event.prototype.on = function (eventName, content) {
 ``` javascript
 event.prototype.once = function () {};
 ```
-once方法对已订阅事件只执行一次，需执行完后立即在event_list中相应的订阅类型属性中删除该订阅的回调函数，其存储过程与on方法几乎一致，同样需要一个订阅类型的topic，以及一个响应事件的回调 content
+once方法对已订阅事件只执行一次，需执行完后立即在event_list中相应的订阅类型属性中删除该订阅的回调函数，其存储过程与on方法几乎一致，同样需要一个订阅类型的topic，以及一个响应事件的回调 content
 ``` javascript
 event.prototype.once = function (eventName, content) {};
 ```
-在执行完本次事件回调后立即取消注册此订阅，而如果此时同一类型的事件注册了多个监听回调，我们无法准确的删除当前once方法所注册的监听回调，所以通常我们采用的遍历事件监听队列，找到相应的监听回调然后将其删除是行不通的。还好，伟大的javascript语言为我们提供了一个强大的闭包特性，通过闭包的方式来装饰content，包装成一个全新的函数。
+在执行完本次事件回调后立即取消注册此订阅，而如果此时同一类型的事件注册了多个监听回调，我们无法准确的删除当前once方法所注册的监听回调，所以通常我们采用的遍历事件监听队列，找到相应的监听回调然后将其删除是行不通的。还好，伟大的javascript语言为我们提供了一个强大的闭包特性，通过闭包的方式来装饰content，包装成一个全新的函数。
 ``` javascript
 events.prototype.once = function (event, content) {
     ...
     // once和on的存储事件回调机制相同
-    // dealOnce 函数 包装函数
+    // dealOnce 函数 包装函数
     this.on(event, dealOnce(this, event, content));
     ...
   }
@@ -167,7 +167,7 @@ events.prototype.once = function (event, content) {
 // 包装函数
 function dealOnce(target, type, content) {
     var flag = false;
-    // 通过闭包特性（会将函数外部引用保存在作用域中）
+    // 通过闭包特性（会将函数外部引用保存在作用域中）
     function packageFun() {
       // 当此监听回调被调用时，会先删除此回调方法
       this.removeListener(type, packageFun);
@@ -213,7 +213,7 @@ event.prototype.emit = function (eventName[,message]) {
       // 是番薯则直接执行，并将所有参数传递给此函数（回调函数）
       ctx.apply(this, args);
     } else if (isArray(ctx)) {
-      // 是数组则遍历调用
+      // 是数组则遍历调用
       for (var i = 0; i < ctx.length; i++) {
         ctx[i].apply(this, args);
       }
@@ -221,17 +221,17 @@ event.prototype.emit = function (eventName[,message]) {
 };
 ```
 
-emit从理解程度上来说应该是更容易一些，只是从存储事件的对象中找到相应类型的监听事件队列，然后执行队列中的每一个回调
+emit从理解程度上来说应该是更容易一些，只是从存储事件的对象中找到相应类型的监听事件队列，然后执行队列中的每一个回调
 
 ##### removeListener 方法实现
 ``` javascript
 event.prototype.removeListener = function () {};
 ```
-删除某种监听类型的某一个监听回调，显然，我们仍然需要一个事件type，以及一个监听回调，当事件对列中的回调与该回调相同时，则移除
+删除某种监听类型的某一个监听回调，显然，我们仍然需要一个事件type，以及一个监听回调，当事件对列中的回调与该回调相同时，则移除
 ``` javascript
 event.prototype.removeListener = function (eventName, content) {};
 ```
-需要注意的是，如果我们确实存在要移除某个监听事件的回调，在on方法时一定不要使用匿名函数作为回调，这样会导致在removeListener是无法移除，因为在javascript中匿名函数是不相等的。
+需要注意的是，如果我们确实存在要移除某个监听事件的回调，在on方法时一定不要使用匿名函数作为回调，这样会导致在removeListener是无法移除，因为在javascript中匿名函数是不相等的。
 ``` javascript
 // 如果需要移除
 
@@ -271,7 +271,7 @@ event.prototype.removeListener = function (eventName, content) {
           // 监听回调相等
           // 从该监听回调的index开始，后面的回调依次覆盖掉前面的回调
           // 将最后的回调删除
-          // 等价于直接将满足条件的监听回调删除
+          // 等价于直接将满足条件的监听回调删除
           this.event_list[eventName].splice(i - index, 1);
           ctx.ListenerCount = ctx.length;
           if (this.event_list[eventName].length === 0) {
@@ -288,7 +288,7 @@ event.prototype.removeListener = function (eventName, content) {
 ``` javascript
 event.prototype.removeAllListener = function () {};
 ```
-此方法有两个用途，即实现当有参数事件类型eventName时，则删除该类型的所有监听（清空此事件的监听回调队列），当没有参数时，则将所有类型的事件监听对垒全部移除，还是比较好理解的直接上代码
+此方法有两个用途，即实现当有参数事件类型eventName时，则删除该类型的所有监听（清空此事件的监听回调队列），当没有参数时，则将所有类型的事件监听对垒全部移除，还是比较好理解的直接上代码
 ``` javascript
 event.prototype.removeAllListener = function ([,eventName]) {
     var _event, ctx;
@@ -300,7 +300,7 @@ event.prototype.removeAllListener = function ([,eventName]) {
     // 判断是否有参数
     if (arguments.length === 0 && (!eventName)) {
       // 无参数
-      // 将key 转成 数组  并遍历
+      // 将key 转成 数组  并遍历
       // 依次删除所有的类型监听
       var keys = Object.keys(this.event_list);
       for (var i = 0, key; i < keys.length; i++) {
@@ -308,7 +308,7 @@ event.prototype.removeAllListener = function ([,eventName]) {
         delete this.event_list[key];
       }
     }
-    // 有参数 直接移除
+    // 有参数 直接移除
     if (ctx || isFunction(ctx) || isArray(ctx)) {
       delete this.event_list[eventName];
     } else {
@@ -322,7 +322,7 @@ event.prototype.removeAllListener = function ([,eventName]) {
 ...
 // 检测回调队列是否有maxed属性以及是否为false
 if (!ctx.maxed) {
-      //只有在是数组的情况下才会做比较
+      //只有在是数组的情况下才会做比较
       if (isArray(ctx)) {
         var len = ctx.length;
         if (len > (this.MaxEventListNum ? this.MaxEventListNum : this.defaultMaxEventListNum)) { 
@@ -339,18 +339,18 @@ if (!ctx.maxed) {
 ```
 -------------
 
-现在Vue可谓是红的发紫，没关系，events-manage也可以在Vue中挂在到全局使用哦
+现在Vue可谓是红的发紫，没关系，events-manage也可以在Vue中挂在到全局使用哦
 
 ``` javascript
 events.prototype.install = function (Vue, Option) {
     Vue.prototype.$ev = this;
   }
 ```
-不用多解释了吧，想必看官都明白应该怎么使用了吧(在Vue中)
+不用多解释了吧，想必看官都明白应该怎么使用了吧(在Vue中)
 
 ##### 关于本库更具体更详细的使用文档，[赶紧戳这里](https://www.github.com/liuchengying/js-Events)
 
-码字不易啊，如果觉得对您有一些帮助，还请给一个大大的赞👍哈哈
+码字不易啊，如果觉得对您有一些帮助，还请给一个大大的赞👍哈哈
 
 （...已是凌晨...）
 
