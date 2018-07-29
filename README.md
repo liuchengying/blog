@@ -5,3 +5,17 @@
 ## 文章列表
 
 * **[关于我的events-manage 事件模块实现](https://github.com/liuchengying/blog/blob/master/blog/01/events-mange.md)**
+
+
+## 关于我
+
+**我的掘金：** [润物无声](https://juejin.im/user/5965d5d251882568d80d00a6)
+
+#### 也可关注我的公众号
+
+![我的公众号](http://119.27.182.76/wechat/wechat.jpg)
+
+-------
+> 工欲善其事，必先利其器
+
+*希望能给各位带来帮助，同时提出不足，欢迎各位！！！*
