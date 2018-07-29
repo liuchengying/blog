@@ -4,7 +4,7 @@
 
 ## 文章列表
 
-* **[关于我的events-manage 事件模块实现](https://github.com/liuchengying/blog/blob/master/blog/01/events-mange.md)**
+* **[关于我的events-manage 事件模块实现](https://github.com/liuchengying/blog/issues/1)**
 
 
 ## 关于我
