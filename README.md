@@ -4,8 +4,8 @@
 
 ## 文章列表
 
+* **[打开小程序的大门---一款天气小程序的诞生(蜗牛小天气)](https://github.com/liuchengying/blog/blob/master/blog/02/xiaochengxu.md)**
 * **[关于我的events-manage 事件模块实现](https://github.com/liuchengying/blog/blob/master/blog/01/events-mange.md)**
-* **[关于我的events-manage 事件模块实现](https://github.com/liuchengying/blog/blob/master/blog/02/xiaochengxu.md)**
 
 
 ## 关于我
@@ -15,7 +15,7 @@
 
 #### 也可关注我的公众号
 
-![我的公众号](https://github.com/liuchengying/blog/tree/master/blog/publicImg/wechat.jpg)
+![我的公众号](https://github.com/liuchengying/blog/blob/master/blog/publicImg/wechat.jpg)
 
 -------
 > 工欲善其事，必先利其器
