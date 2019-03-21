@@ -4,7 +4,8 @@
 
 ## 文章列表
 
-* **[关于我的events-manage 事件模块实现](https://github.com/liuchengying/blog/issues/1)**
+* **[关于我的events-manage 事件模块实现](https://github.com/liuchengying/blog/blob/master/blog/01/events-mange.md)**
+* **[关于我的events-manage 事件模块实现](https://github.com/liuchengying/blog/blob/master/blog/02/xiaochengxu.md)**
 
 
 ## 关于我
@@ -14,7 +15,7 @@
 
 #### 也可关注我的公众号
 
-![我的公众号](http://119.27.182.76/wechat/wechat.jpg)
+![我的公众号](https://github.com/liuchengying/blog/tree/master/blog/publicImg/wechat.jpg)
 
 -------
 > 工欲善其事，必先利其器
