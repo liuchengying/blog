@@ -3,7 +3,7 @@
 
 
 ## 文章列表
-
+* **[通过实现一个简易打包工具，分析打包的核心原理](https://github.com/liuchengying/blog/blob/master/blog/03/minipack.md)**
 * **[打开小程序的大门---一款天气小程序的诞生(蜗牛小天气)](https://github.com/liuchengying/blog/blob/master/blog/02/xiaochengxu.md)**
 * **[关于我的events-manage 事件模块实现](https://github.com/liuchengying/blog/blob/master/blog/01/events-mange.md)**
 
@@ -12,6 +12,7 @@
 
 [我的掘金](https://juejin.im/user/5965d5d251882568d80d00a6)
 [我的博客园](https://www.cnblogs.com/lcy-snail/)
+[我的思否](https://segmentfault.com/u/liuchengying/articles)
 
 #### 也可关注我的公众号
 
