@@ -335,6 +335,7 @@ modules字符串最后通过遍历deps得到的字符串为
     }
 ```
 至于为什么我们要通过require_modulesId函数来转换路径和id的关系呢，这要先从babel吧ES6转成ES5说起，下面列出一个ES6转ES5的例子
+
 **ES6代码**：
 ``` javascript
     import a from './a.js'
