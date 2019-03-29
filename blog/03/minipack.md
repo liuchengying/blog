@@ -9,7 +9,7 @@
 > 功力尚浅，只是入门级的了解打包工具的核心原理，简单的功能
 
 #### 项目地址
-MiniPack：[点击github]([http](https://github.com/liuchengying/MiniPack)) 
+Pack：[点击github]([http](https://github.com/liuchengying/Pack)) 
 #### 原理
 
 当我们更加深入的去了解javascript这门语言时，去知道javascript更底层的一些实现，对我们理解好的开源项目是由很多帮助的，当然对我们自身技术提高会有更大的帮助。
