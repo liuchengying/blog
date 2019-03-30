@@ -10,6 +10,7 @@
 
 ## 关于我
 
+[我的知乎](https://www.zhihu.com/people/liuchengying)
 [我的掘金](https://juejin.im/user/5965d5d251882568d80d00a6)
 [我的博客园](https://www.cnblogs.com/lcy-snail/)
 [我的思否](https://segmentfault.com/u/liuchengying/articles)
