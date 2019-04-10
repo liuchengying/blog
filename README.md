@@ -6,7 +6,7 @@
 * **[通过实现一个简易打包工具，分析打包的核心原理](https://github.com/liuchengying/blog/blob/master/blog/03/minipack.md)**
 * **[打开小程序的大门---一款天气小程序的诞生(蜗牛小天气)](https://github.com/liuchengying/blog/blob/master/blog/02/xiaochengxu.md)**
 * **[关于我的events-manage 事件模块实现](https://github.com/liuchengying/blog/blob/master/blog/01/events-mange.md)**
---------------------------
+
 ## 手写系列
 * **[手写变量类型判断](https://github.com/liuchengying/blog/blob/master/blog/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97/%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD.js)**
 * **[手写call](https://github.com/liuchengying/blog/blob/master/blog/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97/call-appla-bind/%E6%89%8B%E5%86%99call.js)**
